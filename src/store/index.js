@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from '../slices/api';
 
-export const store = configureStore({
+export const createStore = () => configureStore({
 
   reducer: {
     [api.reducerPath]: api.reducer,
