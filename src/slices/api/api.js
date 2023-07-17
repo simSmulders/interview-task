@@ -16,12 +16,17 @@ const api = createApi({
       query: () => 'posts'
     }),
 
+    getPostById: builder.query({
+      query: ({ postId }) => `posts/${postId}`
+    })
+
   })
 
 });
 
 export const {
-  useGetPostsQuery
+  useGetPostsQuery,
+  useGetPostByIdQuery
 } = api
 
 export default api;
