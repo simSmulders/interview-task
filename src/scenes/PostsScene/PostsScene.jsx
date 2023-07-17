@@ -1,21 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import papa from 'papaparse';
 import { useGetPostByIdQuery } from '../../slices/api/api';
 import { MyPlayer } from '../../utils';
 import { Box, Typography } from '@mui/joy';
+import useQuery from '../../hooks/useQuery';
 
 export default function PostsScene () {
 
   const { postId } = useParams();
 
   //could also get the userId from the post but this is how it could be done via query params
-  function useQuery() {
-    const { search } = useLocation();
-
-    return React.useMemo(() => new URLSearchParams(search), [search]);
-  }
-
   let query = useQuery();
   const userId = query.get('user');
 
