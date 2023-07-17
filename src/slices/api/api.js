@@ -18,6 +18,26 @@ const api = createApi({
 
     getPostById: builder.query({
       query: ({ postId }) => `posts/${postId}`
+    }),
+
+    patchVideoAt40Pct: builder.mutation({
+      query: ({ userId, videoId }) => ({
+        url: `/users/${userId}`,
+        method: 'PATCH',
+        body: {
+          videoId
+        }
+      })
+    }),
+
+    patchVideoFinished: builder.mutation({
+      query: ({ userId, videoId }) => ({
+        url: `/users/${userId}`,
+        method: 'PATCH',
+        body: {
+          videoId
+        }
+      })
     })
 
   })
@@ -26,7 +46,9 @@ const api = createApi({
 
 export const {
   useGetPostsQuery,
-  useGetPostByIdQuery
+  useGetPostByIdQuery,
+  usePatchVideoAt40PctMutation,
+  usePatchVideoFinishedMutation
 } = api
 
 export default api;

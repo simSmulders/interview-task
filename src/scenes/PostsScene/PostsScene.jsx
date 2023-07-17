@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import papa from 'papaparse';
 import { useGetPostByIdQuery } from '../../slices/api/api';
 import { MyPlayer } from '../../utils';
@@ -8,6 +8,16 @@ import { Box, Typography } from '@mui/joy';
 export default function PostsScene () {
 
   const { postId } = useParams();
+
+  //could also get the userId from the post but this is how it could be done via query params
+  function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
+  let query = useQuery();
+  const userId = query.get('user');
 
   const { data: post } = useGetPostByIdQuery({postId});
 
@@ -30,7 +40,7 @@ export default function PostsScene () {
 
   const videoId = useMemo(() => {
 
-    if (!csvData) {
+    if (!csvData || !postId) {
       return;
     }
 
@@ -47,7 +57,7 @@ export default function PostsScene () {
           {post.body}
         </Typography>
         <Box sx={{ width: '640px' }}>
-          <MyPlayer videoId={videoId} />
+          <MyPlayer videoId={videoId} userId={userId} />
         </Box>
       </Box>
     </>

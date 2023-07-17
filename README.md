@@ -1,3 +1,8 @@
+# Steps to run application
+- Clone repo
+- Run `yarn install && yarn build`
+- Open `localhost:3000`
+
 # Blue Billywig - Programming Challenge
 
 ![placeholdd](static/logo.png)
