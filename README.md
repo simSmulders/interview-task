@@ -1,6 +1,6 @@
 # Steps to run application
 - Clone repo
-- Run `yarn install && yarn build`
+- Run `yarn install && yarn start`
 - Open `localhost:3000`
 
 # Blue Billywig - Programming Challenge

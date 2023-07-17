@@ -40,13 +40,13 @@ export default function MyPlayer (props) {
 
       function onPause() {
 
-        if (myPlayer.getCurrentTime() / myPlayer.getDuration() > 0.4) {
+        if (myPlayer.getCurrentTime() === myPlayer.getDuration()) {
+          sendVideoFinished({ userId, videoId });
+        } else if (myPlayer.getCurrentTime() / myPlayer.getDuration() > 0.4) {
           sendVideoAt40Pct({ userId, videoId });
         }
 
-        if (myPlayer.getCurrentTime() === myPlayer.getDuration()) {
-          sendVideoFinished({ userId, videoId });
-        }
+
       }
     };
 
