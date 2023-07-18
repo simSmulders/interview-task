@@ -39,7 +39,7 @@ export default function PostsScene () {
       return;
     }
 
-    return csvData?.find(item => item[0] === postId)[1];
+    return csvData?.find(item => item[0] === postId)?.[1];
   }, [ csvData, postId ]);
 
   return post && (
